@@ -1,11 +1,19 @@
-import assert from "assert";
 import { describe, it } from "mocha";
+import { spec } from "pactum";
+import assert from "assert";
 
 
-describe('Array', function () {
-    describe('#indexOf()', function () {
-        it('should return -1 when the value is not present', function () {
-            assert.equal([1, 2, 3].indexOf(4), -1);
-        });
+describe('/emperors API tests', function () {
+
+    it('should return a list of strings', async function () {
+        await spec()
+            .get("http://localhost:3000/emperors")
+            .expectStatus(200)
+            .expect((res) => {
+                const response = <string[]>res.res.json;
+                const strings = response.filter(e => typeof e === "string");
+
+                assert.deepEqual(response, strings, "response should be an array of strings");
+            });
     });
 });
