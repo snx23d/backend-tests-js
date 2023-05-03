@@ -13,6 +13,9 @@
                 "--timeout",
                 "999999",
                 "--colors",
+                "--recursive",
+                "--require",
+                "tests/hooks.ts",
                 "${workspaceFolder}/tests/*"
             ],
             "internalConsoleOptions": "openOnSessionStart",

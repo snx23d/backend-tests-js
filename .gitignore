@@ -1,2 +1,4 @@
 node_modules/*
 mochawesome-report/*
+# do not ever commit this config file to a public repo
+*jira*Hooks*.json
