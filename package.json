@@ -4,7 +4,7 @@
   "description": "backend tests written in js",
   "main": "index.js",
   "scripts": {
-    "test": ".\\node_modules\\.bin\\mocha --require ts-node/register -u bdd --timeout 999999 --colors ./tests/*"
+    "test": ".\\node_modules\\.bin\\mocha --require ts-node/register -u bdd --timeout 999999 --colors ./tests/* --reporter mochawesome --delay"
   },
   "repository": {
     "type": "git",
