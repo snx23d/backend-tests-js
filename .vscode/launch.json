@@ -16,6 +16,7 @@
                 "--recursive",
                 "--require",
                 "tests/hooks.ts",
+                "--delay",
                 "${workspaceFolder}/tests/*"
             ],
             "internalConsoleOptions": "openOnSessionStart",

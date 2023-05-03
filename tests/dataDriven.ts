@@ -1,4 +1,4 @@
-import { before, describe, it } from "mocha";
+import { before, describe, it, run } from "mocha";
 import { spec } from "pactum";
 
 // eslint-disable-next-line no-unused-vars
@@ -18,7 +18,7 @@ before(async function () {
 });
 
 
-describe('/checksanity API  data driven tests', async function () {
+describe('/checksanity API  data driven tests v1', async function () {
 
     //there has to be a static 'it' in order to execute dynamically generated tests
     //otherwise mocha will just skip the entire 'describe'
@@ -42,5 +42,5 @@ describe('/checksanity API  data driven tests', async function () {
 
     });
 
-
+    run();
 });

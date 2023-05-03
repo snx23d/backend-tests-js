@@ -10,7 +10,7 @@ async function ddtWrapper() {
 
     const emperors: string[] = response.body;
 
-    describe.only('/checksanity API  data driven tests', async function () {
+    describe('/checksanity API  data driven tests', async function () {
 
         emperors.forEach(emperor => {
 

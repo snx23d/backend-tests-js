@@ -1,4 +1,5 @@
 import { Context } from "mocha";
+import { postFailedTests, postPassedTests } from "../src/jira/jiraIntegration";
 
 
 const passedTests: string[] = [];
@@ -19,6 +20,6 @@ export const mochaHooks = {
 };
 
 export async function mochaGlobalTeardown() {
-    console.log("sssssssssssssss");
-
+    await postFailedTests(failedtests);
+    await postPassedTests(passedTests);
 }
