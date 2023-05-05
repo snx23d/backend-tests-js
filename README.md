@@ -19,3 +19,5 @@ and passed scenarios are moved to the DONE column accordingly.
 In this particular case the integration uses separate webhooks for the above cases.
 
  `jiraHooks.json` is omitted from the repo for obvious reasons.
+
+ For some reason npm and Windows don't like relative paths in package.json, hence `test` and `testLinux`.

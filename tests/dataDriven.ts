@@ -1,5 +1,8 @@
 import { before, describe, it, run } from "mocha";
 import { spec } from "pactum";
+import { getBaseUrl } from "../src/utils";
+
+const baseUrl = getBaseUrl();
 
 // eslint-disable-next-line no-unused-vars
 let resolveEmperors: (value: string[]) => void;
@@ -8,10 +11,9 @@ const pendingEmperors: Promise<string[]> = new Promise((resolve) => {
     resolveEmperors = resolve;
 });
 
-
 before(async function () {
     const response = await spec()
-        .get("http://localhost:3000/emperors")
+        .get(`${baseUrl}/emperors`)
         .expectStatus(200);
 
     resolveEmperors(response.body);
@@ -34,7 +36,7 @@ describe('/checksanity API  data driven tests v1', async function () {
 
         it(`check emperor ${emperor}'s sanity`, async function () {
             await spec()
-                .get("http://localhost:3000/checksanity")
+                .get(`${baseUrl}/checksanity`)
                 .withQueryParams("name", emperor)
                 .expectStatus(200)
                 .expectJson({ insane: false });

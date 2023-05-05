@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+
+  backend:
+    image: backend:1.0
+    ports:
+      - 3002:3002
+    environment: 
+    - PORT_NUMBER=3002
+
+  backend-tests-js:
+    depends_on:
+      - backend
+    image: backend-tests-js:1.0
+    environment:
+      - PORT_NUMBER=3002
+      - MOCHAWESOME_REPORTDIR=report2
+      - BACKEND_URL=backend:3002
+    volumes:
+      - results:/opt/backend_tests_js/report2
+
+volumes:
+  results:
+    driver: local

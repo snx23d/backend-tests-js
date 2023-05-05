@@ -1,11 +1,13 @@
 import { describe, it, run } from "mocha";
 import { spec } from "pactum";
+import { getBaseUrl } from "../src/utils";
 
+const baseUrl = getBaseUrl();
 
 async function ddtWrapper() {
 
     const response = await spec()
-        .get("http://localhost:3000/emperors")
+        .get(`${baseUrl}/emperors`)
         .expectStatus(200);
 
     const emperors: string[] = response.body;
@@ -16,7 +18,7 @@ async function ddtWrapper() {
 
             it(`check emperor ${emperor}'s sanity ddt v2`, async function () {
                 await spec()
-                    .get("http://localhost:3000/checksanity")
+                    .get(`${baseUrl}/checksanity`)
                     .withQueryParams("name", emperor)
                     .expectStatus(200)
                     .expectJson({ insane: false });
