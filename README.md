@@ -21,3 +21,19 @@ In this particular case the integration uses separate webhooks for the above cas
  `jiraHooks.json` is omitted from the repo for obvious reasons.
 
  For some reason npm and Windows don't like relative paths in package.json, hence `test` and `testLinux`.
+
+ # Commands
+
+Chain of commands to run tests inside Docker container:
+
+1. delete any previous instances of images and containers for both backend and test suite
+2. enter folder with backend application
+3. `docker build -t backend:1.0 .`
+4. enter folder with backend test suite
+5. `docker build -t backend-tests-js:1.0 .`
+6. `docker-compose -f docker-compose.yaml up`
+7. tests are executing now
+8. stop both services: `docker-compose -f docker-compose.yaml down`
+
+If version of backend or tests changes it has to be the same in both the building command and the `docker-compose.yaml` file
+
